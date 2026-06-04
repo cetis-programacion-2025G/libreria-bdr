@@ -1,0 +1,27 @@
+erDiagram
+
+    USUARIOS ||--o{ PRESTAMOS : realiza
+    LIBROS ||--o{ PRESTAMOS : prestado
+
+    USUARIOS {
+        INT id_usuario PK
+        VARCHAR nombre
+        VARCHAR grupo
+    }
+
+    LIBROS {
+        INT id_libro PK
+        VARCHAR titulo
+        VARCHAR autor
+        BOOLEAN disponible
+    }
+
+    PRESTAMOS {
+        INT id_prestamo PK
+        INT id_usuario FK
+        INT id_libro FK
+        DATE fecha_prestamo
+        DATE fecha_devolucion
+        VARCHAR estado
+    }
+    
