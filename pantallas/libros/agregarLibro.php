@@ -1,11 +1,20 @@
 <?php
-function agregarLibro(&$datos) {
+
+function agregarLibro($conn){
+
     limpiarPantalla();
+
     echo "\n";
+
     titulo("AGREGAR LIBRO");
-    $titulo = readline("Titulo : ");
-    $autor  = readline("Autor  : ");
-    $id = insertarLibro($datos, $titulo, $autor);
-    echo "\n  Libro agregado con ID $id.\n";
+
+    $titulo=readline("Titulo : ");
+    $autor=readline("Autor  : ");
+
+    $id=insertarLibro($conn,$titulo,$autor);
+
+    echo "\nLibro agregado con ID $id.\n";
+
     esperarEnter();
+
 }

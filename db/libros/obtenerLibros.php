@@ -1,6 +1,11 @@
 <?php
-// TODO (MySQL):
-// SELECT * FROM libros ORDER BY titulo
-function obtenerLibros(&$datos) {
-    return $datos['libros'];
+
+function obtenerLibros($conn){
+
+    $sql="SELECT * FROM libros ORDER BY titulo";
+
+    $resultado=$conn->query($sql);
+
+    return $resultado->fetch_all(MYSQLI_ASSOC);
+
 }

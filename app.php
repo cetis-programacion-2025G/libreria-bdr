@@ -1,18 +1,14 @@
 <?php
-// ============================================================
-//  app.php — Punto de entrada
-//  Ejecutar: php app.php
-// ============================================================
 
 require_once 'funciones.php';
+require_once 'funciones/conexion.php';
 
-// TODO: cuando implementes MySQL, reemplaza las dos lineas siguientes por:
-//   $conn = conectar();
-$datos = datosIniciales();
+$conn = conectar();
 
 $salir = false;
 
 while (!$salir) {
+
     limpiarPantalla();
     echo "\n";
     titulo("LIBRERIA — SISTEMA DE PRESTAMOS");
@@ -22,20 +18,24 @@ while (!$salir) {
     echo " 0. Salir\n";
     echo str_repeat("─", 46) . "\n";
 
-    $opcion = pedirEntero("Opcion", [0, 1, 2]);
+    $opcion = pedirEntero("Opcion", [0,1,2]);
 
     switch ($opcion) {
+
         case 1:
-            menuLibros($datos);
+            menuLibros($conn);
             break;
+
         case 2:
-            menuPrestamos($datos);
+            menuPrestamos($conn);
             break;
+
         case 0:
             $salir = true;
             break;
     }
 }
 
-// TODO: cuando uses MySQL, agrega aqui: $conn->close();
+$conn->close();
+
 echo "\nHasta luego.\n";

@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 if (!function_exists('mb_str_pad')) {
     function mb_str_pad(
         string $string,

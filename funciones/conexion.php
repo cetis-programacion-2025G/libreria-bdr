@@ -1,26 +1,19 @@
 <?php
 
+function conectar(){
 
-$conexion = new mysqli(
-    "localhost",
-    "root",
-    "",
-    "mi_base"
-);
+    $conexion = new mysqli(
+        "localhost",
+        "root",
+        "",
+        "libreria_escolar"
+    );
 
-if ($conexion->connect_error) {
-    die("Error: " . $conexion->connect_error);
-}
+    if($conexion->connect_error){
+        die("Error de conexión: ".$conexion->connect_error);
+    }
 
-echo "Conectado correctamente";
+    $conexion->set_charset("utf8mb4");
 
-?>
-
-//function conectar() {
-    // TODO: implementar conexion real con MySQL
-    // $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-    // if ($conn->connect_error) die("Error de conexion: " . $conn->connect_error . "\n");
-    // $conn->set_charset('utf8mb4');
-    // return $conn;
-    return null;
+    return $conexion;
 }
